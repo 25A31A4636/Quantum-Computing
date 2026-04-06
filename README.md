@@ -1,5 +1,4 @@
-# Quantum-Computing
-This project demonstrates a simple quantum circuit using Qiskit. A Hadamard gate is applied to a single qubit to create superposition. The qubit is measured into a classical bit using AerSimulator. Results show an approximately 50/50 distribution of 0s and 1s.
+
 from qiskit import QuantumCircuit, transpile
 from qiskit_aer import AerSimulator
 
@@ -19,3 +18,12 @@ result = simulator.run(compiled_circuit, shots=1000).result()
 
 # Get counts
 counts = result.get_counts()
+from qiskit.visualization import plot_bloch_multivector
+from qiskit.quantum_info import Statevector 
+
+qc = QuantumCircuit(1)
+qc.h(0)
+
+state = Statevector.from_instruction(qc)
+plot_bloch_multivector(state)
+<img width="585" height="216" alt="image" src="https://github.com/user-attachments/assets/4c5f5a72-69a2-4f58-a445-0d047b3b6708" />
